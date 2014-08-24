@@ -1,0 +1,43 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
+{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue233;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs24 \cf0 Course Assignment Getting and Cleaning Data 2014\
+------------\
+\
+This code book describes what procedures (summary choices) that were made to process the raw data from the course assignment in the class "getting and cleaning data" from coursera into tidy data. \
+\
+The original raw data stems from this link:\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"}}{\fldrslt 
+\f1 \cf2 \ul \ulc2 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip}}
+\f1  \
+\pard\pardeftab720
+
+\f0 \cf0 \
+\
+and is describe here:\
+\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones"}}{\fldrslt 
+\f1 \cf2 \ul \ulc2 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones}}
+\f1  \
+\pard\pardeftab720
+
+\f0 \cf0 \
+\
+The processing script is called run_analysis and generates two data sets. The first data set is X_data.txt, the second is X_data_independent.txt. The first set corresponds to the output of the first four assignments, the second to the fifth assignment. \
+\
+To generate these data, the script first reads in different files from the a data folder "UCI HAR Dataset". This folder contains two subfolders test and train, which each contain another subfolder "Inertial Signals". This last subfolder is irrelevant for the analysis. \
+\
+The data from train and test are similar, and first read into R when running run_analysis, and further concatenated with simple procedures. \
+\
+A merged data set X_data is produced. This merged data set is then reduced further reduced by only considering those features, i.e. columns, of X_data that contain a string mean() or std(). All other columns of X_data are discarded, the rows are left unchanged. Further processes are applied to make the names more human readable, especially "t"s are changed into time and "f"s are changed into fourier, according to the origin of the file. \
+\
+Futhermore, additional features are added to X_data, such as "activity", which is a mode of action to which experimental subjects whose data is recorded in the data file were engaging in. Also, "subject_id" is added, which is an internal identification number given to each subject participant in the experiment. \
+\
+Finally, a summarization procedure is used to collapse the data in the following way. All rows which have identical features "activity" and "subject_id" are collapsed, and only the average of the feature values is retained. In this way, the data set X_data_independent is generated, with much fewer rows than X_data.\
+}
