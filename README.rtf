@@ -31,11 +31,13 @@ and is describe here:\
 \
 The processing script is called run_analysis and generates two data sets. The first data set is X_data.txt, the second is X_data_independent.txt. The first set corresponds to the output of the first four assignments, the second to the fifth assignment. \
 \
-To generate these data, the script first reads in different files from the a data folder "UCI HAR Dataset". This folder contains two subfolders test and train, which each contain another subfolder "Inertial Signals". This last subfolder is irrelevant for the analysis. \
+To generate these data, the script first reads in different files from the a data folder "UCI HAR Dataset". This folder contains two subfolders test and train, which each contain another subfolder "Inertial Signals". This last subfolder is irrelevant for the analysis. In the analysis, we only used X_train, which is a data set containing the measurement instances in the rows and the features in the columns, subject_train, which contains the subject identification number of the subject on which the measurement was performed in each instance (i.e., it has the same number of rows as X_train, and takes values from 1 to 10) and y_train, which contains labels (1,\'85,6) of the activities that the subjects were performing (walking, walking up, walking down, sitting, standing, lying) for each instance (i.e., it also contains the same number of rows as X_train). The situation is completely analogous for the test folder. \
 \
 The data from train and test are similar, and first read into R when running run_analysis, and further concatenated with simple procedures. \
 \
 A merged data set X_data is produced. This merged data set is then reduced further reduced by only considering those features, i.e. columns, of X_data that contain a string mean() or std(). All other columns of X_data are discarded, the rows are left unchanged. Further processes are applied to make the names more human readable, especially "t"s are changed into time and "f"s are changed into fourier, according to the origin of the file. \
+\
+The mergel data set X_data is a matrix of instances of measurements in the rows and features in the columns. The same is valid for X_data_independent, where the rows are averages over the instances in the X_data file. \
 \
 Futhermore, additional features are added to X_data, such as "activity", which is a mode of action to which experimental subjects whose data is recorded in the data file were engaging in. Also, "subject_id" is added, which is an internal identification number given to each subject participant in the experiment. \
 \

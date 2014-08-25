@@ -30,11 +30,7 @@ y_test <- read.table(file = "UCI\ HAR\ Dataset/test/y_test.txt", header = FALSE,
 
 
 
-## X test has the same number of rows than all the other files, 2947, but 561 columns. 
-## These columns must be the "561-feature vector with time and frequency domain variables" mentioned in Readme.md
-## This organization seems to suggest that these data are organized differently from normal tables.
-## They seem to be transposed tables, where the features are rows, and the measurements are columns.
-
+## X test has the same number of rows than all the other files, 2947, but 561 columns or features. 
 ## An in depth investigation of the data suggests that it is only the X-data files which contain 
 ## the important, processed data. The Intertial Signals folders contain unprocessed, raw data. 
 ## So in order to merge everything into one data set, we can bind X_train and X_test together, 
